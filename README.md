@@ -7,6 +7,7 @@
 ``` bash
 # Install dependencies
 npm install
+cd ios && pod install && cd ..
 
 # Run on iOS
 react-native run-ios
