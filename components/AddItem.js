@@ -8,9 +8,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-const AddItem = ({title, addItem}) => {
+const AddItem = ({addItem}) => {
   const [text, setText] = useState('');
-
   const onChange = textValue => setText(textValue);
 
   return (
@@ -19,8 +18,14 @@ const AddItem = ({title, addItem}) => {
         placeholder="Add Item..."
         style={styles.input}
         onChangeText={onChange}
+        value={text}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => addItem(text)}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => {
+          addItem(text);
+          setText('');
+        }}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} /> Add Item
         </Text>
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
   input: {
     height: 60,
     padding: 8,
-    fontSize: 16,
+    margin: 5,
   },
   btn: {
     backgroundColor: '#c2bad8',
